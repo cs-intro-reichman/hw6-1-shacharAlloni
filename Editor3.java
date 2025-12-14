@@ -8,7 +8,7 @@ import java.awt.Color;
  * For example, to morph the cake into ironman in 50 steps, use:
  * java Editor3 cake.ppm ironman.ppm 50
  * Note: There is no need to scale the target image to the size of the source
- * image, since Runigram.morph performs this action.
+ * image, since Runigram.morph performs this action
  */
 public class Editor3 {
 

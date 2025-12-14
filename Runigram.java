@@ -207,13 +207,15 @@ public class Runigram {
 	 * The two images must have the same dimensions.
 	 */
 	public static Color[][] blend(Color[][] image1, Color[][] image2, double alpha) {
-		int numCol = image1[0].length;
-		int numRow = image1.length;
-		Color[][] result = new Color[numRow][numCol];
+		int numCol = image1[0].length; //720
+		int numRow = image1.length; //540
 
-		for (int i = 0; i < numRow; i++) {
+		Color[][] result = new Color[numRow][numCol]; // 540 X 720 
 
-			for (int j = 0; j < numCol; j++) {
+		for (int i = 0; i < numRow; i++) { // until 540
+
+			for (int j = 0; j < numCol; j++) { // 720
+				System.out.println(i + " " + j);
 				result[i][j] =  blend(image1[i][j], image2[i][j], alpha);
 			}
 		}
@@ -228,7 +230,24 @@ public class Runigram {
 	 * of the source image.
 	 */
 	public static void morph(Color[][] source, Color[][] target, int n) {
-		//// Replace this comment with your code
+		int sourceHeight = source.length;
+		int sourceWidth = source[0].length;
+		int targetHeight = target.length;
+		int targetWidth = target[0].length;
+
+		Color[][] temp = new Color[sourceHeight][sourceWidth];
+
+		if (sourceHeight != targetHeight || sourceWidth != targetWidth) {
+			target = scaled(target, sourceHeight, sourceWidth);
+		}
+
+		for (int i = 0; i <= n; i++) {
+			double alpha = (n - i) / n;
+			temp = blend(source, target , alpha);
+			display(temp);
+			StdDraw.pause(500); 
+		}
+
 	}
 	
 	/** Creates a canvas for the given image. */
