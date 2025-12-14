@@ -20,6 +20,13 @@ public class Runigram {
 		//image = grayScaled(tinypic);
 		System.out.println();
 		print(image);
+
+		Color c1 = new Color(100, 40, 100);
+		Color c2 = new Color(200, 20, 40);
+
+		Color blend = blend(c1, c2, 0.25);
+		print(blend);
+
 		
 		//// Write here whatever code you need in order to test your work.
 		//// You can continue using the image array.
@@ -176,8 +183,21 @@ public class Runigram {
 	 * values in the two input color.
 	 */
 	public static Color blend(Color c1, Color c2, double alpha) {
-		//// Replace the following statement with your code
-		return null;
+		int red1 = c1.getRed();
+		int red2 = c2.getRed();
+
+		int green1 = c1.getGreen();
+		int green2 = c2.getGreen();
+
+		int blue1 = c1.getBlue();
+		int blue2 = c2.getBlue();
+
+		double newRed = (alpha * red1) +  ((1 - alpha) * red2);
+		double newGreen = (alpha * green1) +  ((1 - alpha) * green2);
+		double newBlue = (alpha * blue1) +  ((1 - alpha) * blue2);
+
+		Color result = new Color((int) newRed, (int) newGreen, (int) newBlue);
+		return result;
 	}
 	
 	/**
@@ -187,8 +207,18 @@ public class Runigram {
 	 * The two images must have the same dimensions.
 	 */
 	public static Color[][] blend(Color[][] image1, Color[][] image2, double alpha) {
-		//// Replace the following statement with your code
-		return null;
+		int numCol = image1[0].length;
+		int numRow = image1.length;
+		Color[][] result = new Color[numRow][numCol];
+
+		for (int i = 0; i < numRow; i++) {
+
+			for (int j = 0; j < numCol; j++) {
+				result[i][j] =  blend(image1[i][j], image2[i][j], alpha);
+			}
+		}
+
+		return result;
 	}
 
 	/**
