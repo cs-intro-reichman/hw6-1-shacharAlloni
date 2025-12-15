@@ -107,21 +107,21 @@ public class Runigram {
 	/**
 	 * Returns an image which is the vertically flipped version of the given image. 
 	 */
-	public static Color[][] flippedVertically(Color[][] image){
-		int numCol = image[0].length;
-		int numRow = image.length;
-		Color[][] result = new Color[numRow][numCol];
+public static Color[][] flippedVertically(Color[][] image){
+    int numRow = image.length;
+    int numCol = image[0].length;
 
-		for (int j = 0; j < numRow; j++) {
-			int indexRow = numRow - 1;
+    Color[][] result = new Color[numRow][numCol];
 
-			for (int i = 0; i < numCol; i++) {
-				result[i][j] = image[indexRow][j];
-				indexRow--;
-			}
-		}
-		return result;
-	}
+    for (int i = 0; i < numRow; i++) { 
+        int sourceRow = numRow - 1 - i;
+
+        for (int j = 0; j < numCol; j++) { 
+            result[i][j] = image[sourceRow][j]; 
+        }
+    }
+    return result;
+}
 	
 	// Computes the luminance of the RGB values of the given pixel, using the formula 
 	// lum = 0.299 * r + 0.587 * g + 0.114 * b, and returns a Color object consisting
@@ -237,11 +237,11 @@ public class Runigram {
 		Color[][] temp = new Color[sourceHeight][sourceWidth];
 
 		if (sourceHeight != targetHeight || sourceWidth != targetWidth) {
-			target = scaled(target, sourceHeight, sourceWidth);
+			target = scaled(target, sourceWidth, sourceHeight);
 		}
 
 		for (int i = 0; i <= n; i++) {
-			double alpha = (n - i) / n;
+			double alpha = (double) (n - i) / n;
 			temp = blend(source, target , alpha);
 			display(temp);
 			StdDraw.pause(500); 
