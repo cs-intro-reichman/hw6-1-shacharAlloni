@@ -14,7 +14,7 @@ public class Editor1 {
 	public static void main (String[] args){
 		String fileName = args[0];
 		String action = args[1];
-		// Reads the input image and creates an empty output image
+		// Reads the input image and creates an empty output image.
 		Color[][] imageIn = Runigram.read(fileName);	
 		Color[][] imageOut = null;	
 		// Applies the specified image processing function										
@@ -28,7 +28,7 @@ public class Editor1 {
 		// Creates a canvas in which both images will be displayed, one after the other.
 		// Next, displays the input image, and pauses for a few seconds. 
 		// Finally, displays the output image.
-		// (Notice that both images have the same dimensions).
+		// (Notice that both images have the same dimensions)
 		Runigram.setCanvas(imageIn);
 		Runigram.display(imageIn);
 		StdDraw.pause(3000); 
