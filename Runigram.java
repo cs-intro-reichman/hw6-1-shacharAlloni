@@ -64,9 +64,9 @@ public class Runigram {
     // Prints the RGB values of a given color.
 	private static void print(Color c) {
 	    System.out.print("(");
-		System.out.printf("%3s,", c.getRed());   // Prints the red component
-		System.out.printf("%3s,", c.getGreen()); // Prints the green component
-        System.out.printf("%3s",  c.getBlue());  // Prints the blue component
+		System.out.printf("%3s,", c.getRed());   // Prints the red component.
+		System.out.printf("%3s,", c.getGreen()); // Prints the green component.
+        System.out.printf("%3s",  c.getBlue());  // Prints the blue component.
         System.out.print(")  ");
 	}
 
